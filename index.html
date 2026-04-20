@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CAZANDO</title>
+    <link rel="stylesheet" href="cazando.css">
+</head>
+
+<body onload="iniciarJuego()">
+
+<div class="contenedor">
+    
+    <h1 class="titulo">Atrapa al ratoncito</h1>
+    <img src="logoKrakeDev.png" class="logo">
+    <p class="subtitulo">Podrás atraparlo 6 veces?</p>
+    <p class="autor">AUTOR: DANIEL CUEVA</p>
+
+    <canvas id="areaJuego" width="500" height="400"></canvas>
+
+    <div class="panel">
+        <p>Puntaje: <span id="lblPuntaje">0</span></p>
+        <p>Tiempo: <span id="lblTiempo">10</span></p>
+    </div>
+
+    <div class="botones"> 
+    <button onclick="moverArriba()">ARRIBA</button><br> 
+    <button onclick="moverIzquierda()">IZUIERDA</button> 
+    <button onclick="moverDerecha()">DERECHA</button><br> 
+    <button onclick="moverAbajo()">ABAJO</button> </div>
+    <button onclick="reiniciarJuego()" class="reiniciar">REINICIAR</button>
+
+</div>
+
+<script src="cazando.js"></script>
+</body>
+</html>
