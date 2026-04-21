@@ -7,7 +7,7 @@ let comidaX=0;
 let comidaY=0;
 
 let puntaje=0;
-let tiempo=10;
+let tiempo=15;
 let intervalo;
 
 const ALTO_GATO=60;
@@ -41,7 +41,7 @@ function iniciarJuego(){
     reiniciarVariables();
     dibujarTodo();
 
-    intervalo=setInterval(restarTiempo,1000);
+    intervalo=setInterval(restarTiempo,1500);
 }
 
 function reiniciarVariables(){
@@ -51,7 +51,7 @@ function reiniciarVariables(){
     moverComida();
 
     puntaje=0;
-    tiempo=10;
+    tiempo=15;
 
     actualizarTexto("lblPuntaje",puntaje);
     actualizarTexto("lblTiempo",tiempo);
