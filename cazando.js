@@ -6,6 +6,9 @@ let gatoY=0;
 let comidaX=0;
 let comidaY=0;
 
+let imgGato = new Image();
+imgGato.src = "gato.png";
+
 let puntaje=0;
 let tiempo=15;
 let intervalo;
@@ -35,13 +38,19 @@ function detectarColision(){
 }
 
 function iniciarJuego(){
-    canvas=document.getElementById("areaJuego");
-    ctx=canvas.getContext("2d");
+    canvas = document.getElementById("areaJuego");
+    ctx = canvas.getContext("2d");
 
     reiniciarVariables();
+
+    imgGato.onload = function(){
+        dibujarTodo(); // 🔥 dibuja apenas carga la imagen
+    };
+
+    // 🔥 Dibujo inicial por si la imagen ya estaba en caché
     dibujarTodo();
 
-    intervalo=setInterval(restarTiempo,1500);
+    intervalo = setInterval(restarTiempo,1500);
 }
 
 function reiniciarVariables(){
@@ -67,7 +76,7 @@ function graficarRectangulo(x,y,ancho,alto,color){
 }
 
 function graficarGato(){
-    graficarRectangulo(gatoX,gatoY,ANCHO_GATO,ALTO_GATO,"#00ffff");
+    ctx.drawImage(imgGato, gatoX, gatoY, ANCHO_GATO, ALTO_GATO);
 }
 
 function graficarComida(){
@@ -131,4 +140,10 @@ function reiniciarJuego(){
     reiniciarVariables();
     dibujarTodo();
     intervalo=setInterval(restarTiempo,1500);
+}
+
+function cambiarVelocidad(nuevaVelocidad){
+    clearInterval(intervalo);
+    velocidadCaida = nuevaVelocidad;
+    intervalo = setInterval(bajarLimon, velocidadCaida);
 }
