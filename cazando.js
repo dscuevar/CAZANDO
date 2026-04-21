@@ -9,6 +9,9 @@ let comidaY=0;
 let imgGato = new Image();
 imgGato.src = "gato.png";
 
+let imgRaton = new Image();
+imgRaton.src = "raton.png";
+
 let puntaje=0;
 let tiempo=15;
 let intervalo;
@@ -43,11 +46,19 @@ function iniciarJuego(){
 
     reiniciarVariables();
 
-    imgGato.onload = function(){
-        dibujarTodo(); // 🔥 dibuja apenas carga la imagen
-    };
+    let imagenesCargadas = 0;
 
-    // 🔥 Dibujo inicial por si la imagen ya estaba en caché
+    function verificarCarga(){
+        imagenesCargadas++;
+        if(imagenesCargadas === 2){
+            dibujarTodo();
+        }
+    }
+
+    imgGato.onload = verificarCarga;
+    imgRaton.onload = verificarCarga;
+
+    // Por si ya estaban en caché
     dibujarTodo();
 
     intervalo = setInterval(restarTiempo,1500);
@@ -80,7 +91,9 @@ function graficarGato(){
 }
 
 function graficarComida(){
-    graficarRectangulo(comidaX,comidaY,ANCHO_COMIDA,ALTO_COMIDA,"#ff00ff");
+    if(imgRaton.complete){
+        ctx.drawImage(imgRaton, comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA);
+    }
 }
 
 function dibujarTodo(){
