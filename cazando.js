@@ -130,5 +130,5 @@ function reiniciarJuego(){
     clearInterval(intervalo);
     reiniciarVariables();
     dibujarTodo();
-    intervalo=setInterval(restarTiempo,1000);
+    intervalo=setInterval(restarTiempo,1500);
 }
